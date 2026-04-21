@@ -304,10 +304,6 @@ def run_simulation(use_threshold: bool, seed: int = 0, costs: np.ndarray | None 
 
 
 # Multiprocessing worker
-# Must be at module level (not inside __main__) so it can be pickled on
-# macOS, which uses 'spawn' to start worker processes.  Each worker imports
-# simulation.py fresh with default config values, so we re-apply the
-# per-run overrides before calling run_simulation.
 
 def _run_simulation_worker(args: tuple) -> dict:
     config_overrides, use_threshold, seed, costs = args
@@ -329,7 +325,7 @@ if __name__ == "__main__":
     models_to_run  = ["logit", "wta"] if RUN_BOTH_MODELS else [DEMAND_MODEL]
 
     # Draw costs once with a fixed seed so every seller-count / demand-model
-    # combination uses the same underlying cost realizations (apple-to-apples).
+    # combination uses the same underlying cost realizations.
     # The N-seller run uses the first N draws from this array.
     np.random.seed(COST_SEED)
     all_costs = np.random.uniform(COST_MIN, COST_MAX, max(SELLER_COUNTS))
