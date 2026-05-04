@@ -1,8 +1,7 @@
 """
 diagnose_oscillation.py — Diagnostic for 3-seller WTA oscillation and end-spike.
 
-Runs a short simulation (1M periods) with N_SELLERS=3, DEMAND_MODEL="wta" and
-saves plots to /tmp/ so existing results files are never touched.
+Runs a short simulation (1M periods) with N_SELLERS=3, DEMAND_MODEL="wta"
 
 Produces two figures:
   /tmp/diag_raw_vs_smooth.png  — raw vs smoothed collusion index (last 30%)

@@ -1,7 +1,6 @@
 """
 Q-Learning Simulation: Algorithmic Collusion and the Threshold Mechanism
 =========================================================================
-Author: Dylan Bober
 
 Two experiments run back-to-back with identical Q-learning sellers:
 
@@ -177,8 +176,7 @@ def market_step(
             sold = True
 
         # Proportional threshold update with constant downward drift.
-        # Even when S_O = 0, the platform nudges τ downward by TAU_DRIFT,
-        # reflecting its incentive to drive prices as low as viable.
+        # Even when S_O = 0, the platform nudges τ downward by TAU_DRIFT
         S_O = len(eligible) - S_TARGET  # Seller oversupply
         new_tau = float(np.clip(tau - TAU_LR * S_O - TAU_DRIFT, COST_MIN, MAX_PRICE))
 
