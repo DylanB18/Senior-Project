@@ -9,7 +9,7 @@ Background/*
 *.tex
 *.bib
 Report/*
-!Report/main.pdf
+!Report/Report.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
