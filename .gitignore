@@ -4,6 +4,10 @@
 *.png
 *.md
 *.txt
+!results/*.png
+!results/*.txt
+!results_qinit/*.png
+!results_qinit/*.txt
 Background
 Background/*
 *.tex
