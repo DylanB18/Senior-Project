@@ -61,12 +61,12 @@ _plotting_mod.N_SELLERS      = N_SELLERS
 # ── Agent subclasses for each init strategy ──────────────────────────────────
 
 class _MonopolyInitAgent(simulation.QLearningAgent):
-    """Optimistic: Q = π_m / (1−γ) everywhere. This is Calvano's original strategy."""
+    """Q = π_m / (1−γ) everywhere (monopoly prices). This is Calvano's original strategy."""
     pass  # unchanged — inherits __init__ which already uses simulation.Q_INIT
 
 
 class _ZeroInitAgent(simulation.QLearningAgent):
-    """Pessimistic: all Q-values start at 0."""
+    """All Q-values start at 0."""
     def __init__(self):
         self.Q = np.zeros(
             (simulation.N_STATES, simulation.N_PRICE_LEVELS), dtype=np.float32
@@ -128,7 +128,7 @@ for name, AgentClass in STRATEGIES:
 
 # ── Comparison plot ───────────────────────────────────────────────────────────
 n_records = len(next(iter(results.values()))[0]["collusion_index"])
-x = np.arange(n_records) * RECORD_EVERY / 1_000  # x-axis in thousands of periods
+x = np.arange(n_records) * RECORD_EVERY / 1_000
 
 def _smooth(arr):
     w = max(1, ROLLING_WINDOW // RECORD_EVERY)
