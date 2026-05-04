@@ -5,7 +5,7 @@
 Algorithmic pricing agents trained via Q-learning reliably converge to tacit collusion, yet regulators currently lack effective tools to counteract this behavior. This project asks whether a platform-imposed price threshold can meaningfully reduce collusion among competing Q-learning sellers. Drawing on the Calvano et al. (2020) framework and extending it with a dynamic platform learning mechanism, we simulate markets of two to five sellers under logit and winner-take-all demand.
 
 We find that a threshold set to exclude high-pricing sellers reduces collusion by up to 62% in five-seller logit markets, with consumer surplus rising by over 23%. The mechanism is most effective when the number of sellers meaningfully exceeds the platform's target eligible count. These results suggest that  price thresholds represent an effective, market-compatible policy 
-instrument---one that regulators could plausibly mandate without requiring direct access to a firm's pricing algorithms.
+instrument–one that regulators could plausibly mandate without requiring direct access to a firm's pricing algorithms.
 
 
 The full paper is available at [`Report/Report.pdf`](Report/Report.pdf).
@@ -14,13 +14,7 @@ The full paper is available at [`Report/Report.pdf`](Report/Report.pdf).
 
 ## Model overview
 
-The platform sets a price threshold τ each period. Sellers above the threshold are excluded from the choice set (and earn zero demand). The platform adjusts τ dynamically using a proportional controller:
-
-```
-τ_{t+1} = clip(τ_t − α·S_O − δ,  c_min, p_max)
-```
-
-where S_O = S_t − S_target is the oversupply signal (observed eligible sellers minus target), α is a learning rate, and δ = 0.0005 is a constant downward drift so τ never stalls when S_O ≈ 0.
+The platform sets a price threshold τ each period. Sellers above the threshold are excluded from the choice set (and earn zero demand). The platform adjusts τ dynamically using a proportional controller.
 
 Sellers are Q-learning agents with optimistic initialization (Q_INIT = π_m / (1−γ)), which replicates the Calvano et al. result that agents discover and sustain tacit collusion.
 
