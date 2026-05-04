@@ -3,6 +3,7 @@
 **/.DS_Store
 *.png
 *.md
+!README.md
 *.txt
 !results/*.png
 !results/*.txt
